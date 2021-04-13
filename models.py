@@ -3,10 +3,11 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class User(Base):
     __tablename__ = "user_table"
     id = Column(Integer, primary_key=True)
-    username = Column(String)
+    username = Column(String, unique=True)
     password = Column(String)
 
     def __str__(self) -> str:
@@ -17,4 +18,3 @@ class User(Base):
 
     def get_id(self) -> str:
         return str(self.username)
-
